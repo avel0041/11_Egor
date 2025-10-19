@@ -21,3 +21,4 @@ for i in f:
             i=i[:-1]
         s=max(len(i), s)
 print(s)
+f=f.replace
