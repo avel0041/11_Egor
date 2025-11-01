@@ -1,18 +1,10 @@
-import sys
-from functools import lru_cache
-sys.setrecursionlimit(10000)
-@lru_cache()
-def f(n):
-    if n<3:
-        return 1
-    if n>2 and n%2==0:
-        return g(n)+f(n-1)
-    if n>2 and n%2!=0:
-        return f(n-2) - 2*g(n+1)
-def g(n):
-    if n<3:
-        return 1
-    if n > 2 and n%2==0:
-        return f(n-3)+f(n-2)
-    return f(n+1)+g(n-1)
-print(g(120))
+from itertools import*
+t='12 13 15 17 21 26 27 31 34 35 43 45 47 51 53 54 56 57 62 65 67 71 72 74 75 76'
+g='kb kp ka kq qk qa qc cq ca cb bc ba br bp bk pb pk pr rp rb ra aq ac ar ab ak'
+for p in permutations('aqcrpkb'):
+    a=t
+    for i in range(1, 8):
+        a=a.replace(str(i), p[i-1])
+    if set(a.split())==set(g.split()):
+        print('1 2 3 4 5 6 7 ')
+        print(*p)
